@@ -5,6 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 
+/**
+ * When the view is first shown have it display the red light on and all others off
+ * After 7 seconds display the green light on and all others off.
+ * 5 seconds after changing to green, display the yellow light on and all others off
+ * 3 seconds after changing to yellow, display the red light on and all others off
+ * Repeat the above process forever
+ */
 class MainActivity : AppCompatActivity() {
     private val redOff = "#22FF0000"
     private val redOn  = "#FFFF0000"
