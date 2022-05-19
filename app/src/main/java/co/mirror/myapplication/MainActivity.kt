@@ -3,7 +3,11 @@ package co.mirror.myapplication
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.widget.ImageView
+import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 /**
  * When the view is first shown have it display the red light on and all others off
@@ -12,6 +16,7 @@ import android.widget.ImageView
  * 3 seconds after changing to yellow, display the red light on and all others off
  * Repeat the above process forever
  */
+
 class MainActivity : AppCompatActivity() {
     private val redOff = "#22FF0000"
     private val redOn  = "#FFFF0000"
@@ -26,5 +31,11 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.red).setColorFilter(Color.parseColor(redOff))
         findViewById<ImageView>(R.id.yellow).setColorFilter(Color.parseColor(yellowOff))
         findViewById<ImageView>(R.id.green).setColorFilter(Color.parseColor(greenOff))
+    }
+
+    private fun timerExamples() {
+        val disposable = Observable.timer(1L, TimeUnit.SECONDS).subscribe({/* Do Something*/}, { Log.e("ErrorTag", "Error $it")})
+        val disposable2 = Observable.interval(1L, TimeUnit.SECONDS).subscribe({/* Do Something*/}, { Log.e("ErrorTag", "Error $it")})
+        Handler().postDelayed({/* Do Something*/}, 1000)
     }
 }
